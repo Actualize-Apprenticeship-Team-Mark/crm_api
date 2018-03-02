@@ -34,7 +34,7 @@
                 <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
                 <td>{{ lead.phone }}</td>
                 <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
-
+                <td v-onclick=""><button>Update</button></td>
               </tr>
             </tbody>
           </table>
