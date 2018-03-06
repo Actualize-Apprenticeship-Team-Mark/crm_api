@@ -97,7 +97,13 @@
             <%= f.label :notes, "Call Converter Notes" %>
             <%= f.text_area :notes, {class: 'form-control'} %>
           </div>
-        </div>
+            <div class="form-group">
+                <div class="i-checks">
+                  <%= f.label :sales, "Latest Outreach" %>
+                  <%= f.text_field :sales, class: 'form-control' %>
+                </div>
+              </div>
+          </div>
       </div>
     </div>
     <div class="col-lg-6">
@@ -190,8 +196,9 @@
                 <%= f.label :rep_notes, "Admission Advisor Notes" %>
                 <%= f.text_area :rep_notes, class: 'form-control' %>
               </div>
-            </div>
+            </div>   
             <div>
+
 
         <% end %>
     </div>
