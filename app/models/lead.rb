@@ -1,7 +1,8 @@
 class Lead < ApplicationRecord
   has_many :events
-  has_many :outreaches
   before_save :standardize_phone
+  has_many :outreaches
+  accepts_nested_attributes_for :outreaches
 
   attr_accessor :call_mode
 
