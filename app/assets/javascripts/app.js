@@ -4,11 +4,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     el: '#app',
     data: {
       leads: [],
+      searchTerm: "",
       time_format: "12/25/17",
       url: "https://www.google.com/"
     },
     mounted: function() {
-      $.get('/api/v1/leads.json').success(function(response) {
+      $.get('/api/v1/leads.json' + this.$searchTerm).success(function(response) {
         console.log(this);
         this.leads = response;
       }.bind(this));
@@ -16,10 +17,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     methods: {
       moment: function(date) {
         return moment(date);
-      }
+      },
+      validLead: function(inputName) {
+        var validFirstName = inputName.first_name.toLowerCase().includes(this.searchTerm.toLowerCase());
+        var validLastName = inputName.last_name.toLowerCase().includes(this.searchTerm.toLowerCase());
+        var validEmail = inputName.email.toLowerCase().includes(this.searchTerm.toLowerCase());
+        return validFirstName || validLastName || validEmail;
+      },
     },
     computed: {
-
-    },
+    }
   });
 });

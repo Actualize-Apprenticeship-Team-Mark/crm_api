@@ -1,6 +1,7 @@
 class Api::V1::LeadsController < ApplicationController
 
   def index
+    search_params = params[:search_term]
     @leads = Lead.all
     render "index.json.jbuilder"
   end
