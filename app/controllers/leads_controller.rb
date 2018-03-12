@@ -28,6 +28,7 @@ class LeadsController < ApplicationController
   end
 
   def create
+    @lead = params[:latest_outreach]
     @lead = Lead.create(lead_params)
     flash[:success] = "Lead added!"
     redirect_to '/'
@@ -52,6 +53,7 @@ class LeadsController < ApplicationController
   end
 
   def update
+    @lead = params[:latest_outreach]
     @lead = Lead.find_by(id: params[:id])
     if @lead.update(lead_params)    
       flash[:success] = "Lead saved!"
@@ -118,6 +120,6 @@ class LeadsController < ApplicationController
   private
 
   def lead_params
-    params.require(:lead).permit(:first_name, :last_name, :email, :phone, :city, :state, :zip, :contacted, :appointment_date, :notes, :connected, :bad_number, :advisor, :location, :first_appointment_set, :first_appointment_actual, :first_appointment_format, :second_appointment_set, :second_appointment_actual, :second_appointment_format, :enrolled_date, :deposit_date, :sales, :collected, :status, :next_step, :rep_notes, :exclude_from_calling, :meeting_type, :meeting_format, outreaches_attributes: [:lead_id, :latest_outreachs])
+    params.require(:lead).permit(:first_name, :last_name, :email, :phone, :city, :state, :zip, :contacted, :appointment_date, :notes, :connected, :bad_number, :advisor, :location, :first_appointment_set, :first_appointment_actual, :first_appointment_format, :second_appointment_set, :second_appointment_actual, :second_appointment_format, :enrolled_date, :deposit_date, :sales, :collected, :status, :next_step, :rep_notes, :exclude_from_calling, :meeting_type, :meeting_format, :latest_outreach, outreaches_attributes: [:lead_id, :latest_outreach])
   end
 end
