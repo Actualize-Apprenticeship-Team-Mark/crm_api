@@ -37,7 +37,6 @@ class LeadsController < ApplicationController
     @lead = Lead.find_by(id: params[:id])
     if params[:add_outreach]
       @lead.outreaches.build
-      binding.pry
     end
 
     # We grab the entire text history from the Twilio API

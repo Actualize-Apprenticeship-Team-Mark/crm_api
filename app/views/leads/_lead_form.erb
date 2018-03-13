@@ -74,7 +74,7 @@
         <div class="card-header d-flex align-items-center">
           <h2 class="h5 display">Post-Call Records</h2>
         </div>
-        <%= link_to "Add Outreach", "/leads/#{@lead.id}/edit?add_outreach=true" %>
+        <button><%= link_to "Add Outreach", "/leads/#{@lead.id}/edit?add_outreach=true" %></button>
         <div class="form-group">
           <%= f.fields_for :outreaches do |
             ff| %>
