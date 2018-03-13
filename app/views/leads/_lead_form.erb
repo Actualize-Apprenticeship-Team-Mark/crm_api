@@ -87,7 +87,8 @@
               <%= f.check_box :bad_number %>
             </div>
           </div>
-          <div class="form-group">
+          <div class="
+          form-group">
             <div class="i-checks">
               <%= f.label :exclude_from_calling, "Never call again" %>
               <%= f.check_box :exclude_from_calling %>
@@ -99,7 +100,8 @@
           </div>
           <div class="form-group">
 
-              <%= f.fields_for :outreaches do |ff| %>
+              <%= f.fields_for :outreaches do |
+                ff| %>
                 <%= ff.label :latest_outreach, "Latest Outreach" %>
                 <%= ff.text_field :latest_outreach, class: 'form-control' %>
               <% end %>
