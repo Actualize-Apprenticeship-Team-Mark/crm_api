@@ -74,6 +74,14 @@
         <div class="card-header d-flex align-items-center">
           <h2 class="h5 display">Post-Call Records</h2>
         </div>
+        <%= link_to "Add Outreach", "/leads/#{@lead.id}/edit?add_outreach=true" %>
+        <div class="form-group">
+          <%= f.fields_for :outreaches do |
+            ff| %>
+            <%= ff.label :latest_outreach, "Latest Outreach" %>
+            <%= ff.text_field :latest_outreach, class: 'form-control' %>
+          <% end %>
+        </div>
         <div class="update-lead-form">
           <div class="form-group">
             <div class="i-checks">
@@ -87,7 +95,8 @@
               <%= f.check_box :bad_number %>
             </div>
           </div>
-          <div class="form-group">
+          <div class="
+          form-group">
             <div class="i-checks">
               <%= f.label :exclude_from_calling, "Never call again" %>
               <%= f.check_box :exclude_from_calling %>
@@ -190,8 +199,9 @@
                 <%= f.label :rep_notes, "Admission Advisor Notes" %>
                 <%= f.text_area :rep_notes, class: 'form-control' %>
               </div>
-            </div>
+            </div>   
             <div>
+
 
         <% end %>
     </div>
