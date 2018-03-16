@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :admins
 
+  get '/settings/edit' => 'settings#edit'
+  patch '/settings/:id' => 'settings#update'
+
   resources :leads
   get '/next' => 'leads#next'
   get '/no_leads' => 'leads#no_leads'
@@ -15,9 +18,11 @@ Rails.application.routes.draw do
   post '/incoming_voice' => 'webhooks#incoming_voice'
   post '/incoming_text' => 'webhooks#incoming_text'
 
+
   namespace :api do
     namespace :v1 do
       get '/leads' => 'leads#index'
+
       get '/leads/:id' => 'leads#show'
       post '/leads' => 'leads#create'
     end
