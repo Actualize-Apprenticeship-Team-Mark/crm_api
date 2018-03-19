@@ -4,8 +4,10 @@ class SettingsController < ApplicationController
   end
 
   def update
-    @setting = Admin.find_by(id: params[:current_admin])
-    if @setting.update
+    @setting = current_admin.setting
+    if @setting.update(
+      auto_text: params[:auto_text]
+      )
       flash[:success] = "Settings saved!"
       redirect_to '/'
     else
