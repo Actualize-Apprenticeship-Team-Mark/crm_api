@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526204821) do
+ActiveRecord::Schema.define(version: 20180315184218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,21 @@ ActiveRecord::Schema.define(version: 20170526204821) do
     t.string   "meeting_format"
     t.string   "ip_state"
     t.boolean  "online",                    default: false
+    t.text     "latest_outreach"
+  end
+
+  create_table "outreaches", force: :cascade do |t|
+    t.text     "latest_outreach"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "lead_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.integer  "admin_id"
+    t.string   "auto_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "events", "leads"
