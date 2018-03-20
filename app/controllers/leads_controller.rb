@@ -46,7 +46,12 @@ class LeadsController < ApplicationController
                   :from => ENV['TWILIO_PHONE_NUMBER']
     })
     @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| m.date_sent}
-    
+
+    client.messages.create(
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to: @lead.phone,
+      body: "Hi, " + @lead.first_name + "! This is Rena from the Actualize coding bootcamp. Do you have a minute to talk?"
+      )
 
   end
 

@@ -35,7 +35,8 @@
             <div id="log"></div>
             <div class="card-header d-flex align-items-center">
               <h2 class="h5 display">Auto-Text</h2>
-              <button id="button-call" class="btn btn-primary">Send Auto-Text</button>
+              <%= submit_tag "Text", {class: "form-control btn btn-info"} %>
+              <button id="button-auto-text" class="btn btn-primary">Send Auto-Text</button>
             </div>            
             <div class="card-header d-flex align-items-center">
               <h2 class="h5 display">Send Custom Text Message</h2>
@@ -108,18 +109,22 @@
   $.getJSON('/token')
     .done(function (data) {
       log('Got a token.');
+      
       console.log('Token: ' + data.token);
 
       // Setup Twilio.Device
       Twilio.Device.setup(data.token);
+      console.log(Twilio.Device)
 
-      Twilio.Device.ready(function (device) {
+      //changed from .ready to .offline....
+      Twilio.Device.offline(function (device) {
         log('Twilio.Device Ready!');
         document.getElementById('call-controls').style.display = 'block';
       });
 
       Twilio.Device.error(function (error) {
         log('Twilio.Device Error: ' + error.message);
+
       });
 
       Twilio.Device.connect(function (conn) {
@@ -164,6 +169,7 @@
     console.log('Calling ' + params.To + '...');
     Twilio.Device.connect(params);
   };
+
 
   // Bind button to hangup call
   document.getElementById('button-hangup').onclick = function () {
