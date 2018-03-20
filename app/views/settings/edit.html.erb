@@ -1,4 +1,4 @@
-<%= form_tag("/settings/#{@setting.id}", method: "patch") do %>
+<%= form_tag("/settings", method: "patch") do %>
   <%= label_tag(:auto_text) %>
   <%= text_field_tag(:auto_text, @setting.auto_text) %>
   <%= submit_tag("Save") %>

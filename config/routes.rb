@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :admins
 
   get '/settings/edit' => 'settings#edit'
-  patch '/settings/:id' => 'settings#update'
+  patch '/settings' => 'settings#update'
 
   resources :leads
   get '/next' => 'leads#next'
