@@ -35,7 +35,7 @@
             <div id="log"></div>
             <div class="card-header d-flex align-items-center">
               <h2 class="h5 display">Auto-Text</h2>
-              <button id="button-call" class="btn btn-primary">Send Auto-Text</button>
+              <button id="button-text" class="btn btn-primary">Send Auto-Text</button>
             </div>            
             <div class="card-header d-flex align-items-center">
               <h2 class="h5 display">Send Custom Text Message</h2>
@@ -113,7 +113,7 @@
       // Setup Twilio.Device
       Twilio.Device.setup(data.token);
 
-      Twilio.Device.ready(function (device) {
+      Twilio.Device.offline(function (device) {
         log('Twilio.Device Ready!');
         document.getElementById('call-controls').style.display = 'block';
       });
