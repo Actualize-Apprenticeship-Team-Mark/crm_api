@@ -39,17 +39,17 @@ class Lead < ApplicationRecord
 
   private
 
-  def standardize_phone
-    begin
-      self.standard_phone = Phoner::Phone.parse(self.phone, country_code: '1').to_s
-    rescue
-      # We'll ignore an exception that could happen if the given phone 
-      # number has a very unusual format
+    def standardize_phone
+      begin
+        self.standard_phone = Phoner::Phone.parse(self.phone, country_code: '1').to_s
+      rescue
+        # We'll ignore an exception that could happen if the given phone 
+        # number has a very unusual format
+      end
     end
-  end
 
-  def should_be_left_a_message
-    # We tried dialing a valid number but the lead didn't answer their phone:
-    self.contacted && !self.bad_number && !self.connected
-  end
+    def should_be_left_a_message
+      # We tried dialing a valid number but the lead didn't answer their phone:
+      self.contacted && !self.bad_number && !self.connected
+    end
 end

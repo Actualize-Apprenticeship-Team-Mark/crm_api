@@ -20,19 +20,30 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Appointment Date</th>
+                <<!-- th>Events</th> -->
                 
               </tr>
             </thead>
             <tbody>
-              <tr v-for="lead in leads" v-if="validLead(lead)">
+              <div>
+              <tr v-for="lead in leads" v-if="validLead(lead)"  v-on:click="eventHistory()" >
+
                 <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                 <td>{{ lead.first_name }}</td>
                 <td>{{ lead.last_name }}</td>
                 <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
                 <td>{{ lead.phone }}</td>
                 <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
-
+                <td>
+                  <div class="row" v-for="event in lead.events"  v-on:click="toggle">
+                    <div>{{ event.name }}</div>
+                    <div>{{ event.lead_id }}</div>
+                    <div>{{ event.created_at }}</div>
+                  </div>
+                </td>
               </tr>
+                
+              </div>
             </tbody>
           </table>
         </div>
@@ -40,4 +51,8 @@
     </div>
   </section>
 </div>
-
+<!-- <script >
+  function leadHistory() {
+    console.log('hello again from click')
+  }
+</script> -->
