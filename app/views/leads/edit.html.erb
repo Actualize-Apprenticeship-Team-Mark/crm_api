@@ -35,7 +35,8 @@
             <div id="log"></div>
             <div class="card-header d-flex align-items-center">
               <h2 class="h5 display">Auto-Text</h2>
-              <button id="button-text" class="btn btn-primary">Send Auto-Text</button>
+              <%= button_to('Send Auto Text', "/leads/#{@lead.id}/edit?send_text=true", params: { :send_text => 'true' }, :method => 'get', :class => 'btn btn-primary')  %>
+            
             </div>            
             <div class="card-header d-flex align-items-center">
               <h2 class="h5 display">Send Custom Text Message</h2>
@@ -170,6 +171,7 @@
     // log('Hanging up...');
     Twilio.Device.disconnectAll();
   };
+
 
 });
 
